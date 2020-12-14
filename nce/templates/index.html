@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cysofthome</title>
+</head>
+<body>
+{%block content%}
+<div class="col-md-8 offset-md-2">
+    {%for instance in object_list%}
+    <P> <a href="{{instance.get_absolute_url}}">{{instance.title}}</a> </P>
+    {%endfor%}
+</div>
+{%endblock%}
+</body>
+</html>
