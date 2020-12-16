@@ -13,4 +13,6 @@ class Project(models.Model):
     numbers_of_pages = models.IntegerField()
     departments = models.ManyToManyField('Department', related_name='projects')
 
+    def __str__(self):
+        return self.title
 

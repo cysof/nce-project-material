@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{%block mid_block%}
+{%for project in object_list%}
+<h3><a href="{% url 'nce:project_detail' project.pk%}">{{project.title}}</a> </h3>
+<p>{{ project.contents | slice:":400" }}...</p>
+{%endfor%}
+{%endblock%}
+</body>
+</html>

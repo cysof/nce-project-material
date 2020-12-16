@@ -1,33 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-from nce.models import Department, Project
 from django.views.generic import (
     ListView, DetailView)
-
-# Create your views here.
-
-from .models import Project
+from .models import Project, Department
 
 
-class ProjectListView(ListView):
-    queryset = Project.objects.all()
-    template_name = 'index.html'
+class ListOfDepart(ListView):
+    model = Department
+    template_name = 'nceprojectsite/list_of_departments.html'
 
 
-def departments(request, department):
-    projects = Project.objects.filter(
-        departments__name__contains=department
-    )
-    context = {
-        'department': department,
-        'projects': projects
-    }
-    return render(request, "departments.html", context)
+class ListOfProject(ListView):
+    model = Project
+    template_name = 'nceprojectsite/index.html'
 
 
 class ProjectDetailView(DetailView):
-    template_name = 'project_view.html'
-
-    def get_object(self):
-        id_ = self.kwargs.get('id')
-        return get_object_or_404(Project, id=id_)
-
+    model = Project
+    template_name = 'nceprojectsite/project_detail.html'
